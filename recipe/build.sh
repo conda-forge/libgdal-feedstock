@@ -66,10 +66,14 @@ export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
             --with-jpeg=$PREFIX \
             --with-kea=$PREFIX/bin/kea-config \
             --with-libjson-c=$PREFIX \
-            --with-libtiff=$PREFIX \
             --with-libz=$PREFIX \
+            --with-libkml=$PREFIX \
+            --with-libtiff=$PREFIX \
+            --with-liblzma=yes \
             --with-netcdf=$PREFIX \
             --with-openjpeg=$PREFIX \
+            --with-poppler=$PREFIX \
+            --with-pcre \
             --with-pg=$PREFIX/bin/pg_config \
             --with-png=$PREFIX \
             --with-spatialite=$PREFIX \

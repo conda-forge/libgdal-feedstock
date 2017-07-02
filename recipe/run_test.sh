@@ -16,4 +16,8 @@ gdalinfo /vsizip/stere.zip/stere.tif
 
 # Check shapefile read.
 ogrinfo sites.shp
+
+# Check KMZ support
+ogrinfo sample.kmz
+
 popd
