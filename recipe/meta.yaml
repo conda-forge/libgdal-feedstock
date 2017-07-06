@@ -1,4 +1,4 @@
-{% set version = "2.1.4" %}
+{% set version = "2.2.1" %}
 
 package:
   name: libgdal
@@ -7,18 +7,17 @@ package:
 source:
   fn: gdal-{{ version }}.tar.gz
   url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}.tar.gz
-  sha256: 79aa6331008af7c1d36d30e4a7dae92b2b8a3512a6084b672a2b2659731e6529
+  sha256: 61837706abfa3e493f3550236efc2c14bd6b24650232f9107db50a944abf8b2f
+  # Workaround to allow CircleCI to complete.
   patches:
     # Fixes compilation problems with JPEG.
     # https://lists.osgeo.org/pipermail/gdal-dev/2016-January/043443.html
-    - disable_jpeg12.patch
-    # BUILT_AS_DYNAMIC_LIB
-    - windowshdf5.patch
-    # Use multiple cores on Windows
-    - multiprocessor.patch
+    - disable_jpeg12.patch  # [win]
+    - windowshdf5.patch  # [win]
+    - multiprocessor.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
