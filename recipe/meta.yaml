@@ -8,7 +8,6 @@ source:
   fn: gdal-{{ version }}.tar.gz
   url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}.tar.gz
   sha256: 61837706abfa3e493f3550236efc2c14bd6b24650232f9107db50a944abf8b2f
-  # Workaround to allow CircleCI to complete.
   patches:
     # Fixes compilation problems with JPEG.
     # https://lists.osgeo.org/pipermail/gdal-dev/2016-January/043443.html
