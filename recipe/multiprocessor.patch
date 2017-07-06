@@ -1,13 +1,22 @@
---- gdal-2.2.0.orig/nmake.opt	2017-04-28 13:15:24.000000000 -0300
-+++ gdal-2.2.0/nmake.opt	2017-05-11 09:54:42.503347152 -0300
-@@ -130,15 +130,15 @@
+--- gdal-2.1.4.orig/nmake.opt	2017-06-23 09:21:52.000000000 -0300
++++ gdal-2.1.4/nmake.opt	2017-07-05 20:34:03.068012531 -0300
+@@ -81,7 +81,7 @@
+ 
+ # Set this to the installed directory containing python.  If you don't
+ # have python just let it point to a directory that does not exist (as now).
+-!IFNDEF PYDIR 
++!IFNDEF PYDIR
+ PYDIR   =	"C:\Software\Python24"
+ !ENDIF
+ 
+@@ -127,22 +127,22 @@
  !IFNDEF OPTFLAGS
  !IF $(MSVC_VER) >= 1400
  !IFNDEF DEBUG
--OPTFLAGS= $(CXX_ANALYZE_FLAGS) $(CXX_PDB_FLAGS) /nologo /MP /MD /EHsc /Ox /FC /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DNDEBUG
+-OPTFLAGS= $(CXX_ANALYZE_FLAGS) $(CXX_PDB_FLAGS) /nologo /MD /EHsc /Ox /FC /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DNDEBUG
 +OPTFLAGS= $(CXX_ANALYZE_FLAGS) $(CXX_PDB_FLAGS) /nologo /MP$(CPU_COUNT) /MD /EHsc /Ox /FC /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DNDEBUG
  !ELSE
--OPTFLAGS= $(CXX_ANALYZE_FLAGS) $(CXX_PDB_FLAGS) /nologo /MP /MD /EHsc /FC /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DDEBUG
+-OPTFLAGS= $(CXX_ANALYZE_FLAGS) $(CXX_PDB_FLAGS) /nologo /MD /EHsc /FC /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DDEBUG
 +OPTFLAGS= $(CXX_ANALYZE_FLAGS) $(CXX_PDB_FLAGS) /nologo /MP$(CPU_COUNT) /MD /EHsc /FC /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DDEBUG
  !ENDIF
  !ELSE
@@ -20,3 +29,176 @@
  !ENDIF
  !ENDIF  #MSVC_VER
  !ENDIF  # OPTFLAGS
+ 
+-# 
++#
+ # Set flags controlling warnings level, and suppression of some warnings.
+-# 
++#
+ !IFNDEF WARNFLAGS
+ # 4127: conditional expression is constant
+ # 4251: 'identifier' : class 'type' needs to have dll-interface to be used by clients of class 'type2'
+@@ -152,13 +152,13 @@
+ # 4245: 'conversion' : conversion from 'type1' to 'type2', signed/unsigned mismatch
+ # 4206: nonstandard extension used : translation unit is empty (only applies to C source code)
+ # 4611: interaction between '_setjmp' and C++ object destruction is non-portable
+-# 
++#
+ WARNFLAGS =	/W4 /wd4127 /wd4251 /wd4275 /wd4786 /wd4100 /wd4245 /wd4206 /wd4611
+ !ENDIF
+ 
+-# 
++#
+ # Set flags controlling availability of SSE
+-# 
++#
+ !IFNDEF SSEFLAGS
+ SSEFLAGS = /DHAVE_SSE_AT_COMPILE_TIME
+ #SSE_ARCH_FLAGS = /arch:SSE
+@@ -188,19 +188,19 @@
+ # compiles.
+ #WIN64=YES
+ 
+-# If you don't want some entry points to have STDCALL conventions, 
++# If you don't want some entry points to have STDCALL conventions,
+ # comment out the following and add -DCPL_DISABLE_STDCALL in OPTFLAGS.
+ # This option has no effect on 64-bit windows.
+ STDCALL=YES
+ 
+-# Version number embedded in DLL name. 
++# Version number embedded in DLL name.
+ # If GDAL version is X.Y.Z, VERSION = X * 100 + Y
+ !IFNDEF VERSION
+ VERSION =	201
+ !ENDIF
+ 
+ # Comment the following out if you want PAM supported disabled
+-# by default.  
++# by default.
+ PAM_SETTING=-DPAM_ENABLED
+ 
+ # Uncomment the following to link OGR utilities against main GDAL DLL
+@@ -208,7 +208,7 @@
+ DLLBUILD=1
+ 
+ # Enable all OGR formats, or only raster formats?  Comment out to disable
+-# vector formats. 
++# vector formats.
+ INCLUDE_OGR_FRMTS = YES
+ 
+ # Enable all GNM formats?  Comment out to disable
+@@ -216,7 +216,7 @@
+ #INCLUDE_GNM_FRMTS = YES
+ 
+ # To be enabled defined to point to setargv.obj from the Visual C++ directory,
+-# when you want the utility programs to be able to expand wildcards. 
++# when you want the utility programs to be able to expand wildcards.
+ #SETARGV =	"D:\Software\VStudio\VC98\lib\setargv.obj"
+ 
+ # Uncomment to build with libiconv library to support extended character
+@@ -285,8 +285,8 @@
+ #		$(LIBKML_DIR)/third_party\uriparser-0.7.5.win32/release/uriparser.lib \
+ #		$(LIBKML_DIR)/third_party\zlib-1.2.3.win32/lib/minizip.lib \
+ #		$(LIBKML_DIR)/third_party\zlib-1.2.3.win32/lib/zlib.lib
+-							
+-# Uncomment the following and update to enable ECW read support with the 
++
++# Uncomment the following and update to enable ECW read support with the
+ # 4.1+ readonly SDK
+ #ECWDIR  = 	"c:/Program Files/ERDAS/ERDAS ECW JPEG2000 Read SDK"
+ #ECWFLAGS =	-DECWSDK_VERSION=41 \
+@@ -297,9 +297,9 @@
+ #		$(ECWDIR)\lib\vc90\win32\NCSUtil4.lib \
+ #		$(ECWDIR)\lib\vc90\win32\NCScnet4.lib
+ 
+-# To add Write support, use the write SDK, change NCSEcw4_RO.lib to 
++# To add Write support, use the write SDK, change NCSEcw4_RO.lib to
+ # NCSEcw4.lib, and add -DHAVE_COMPRESS to ECWFLAGS.  The ECWDIR setting will
+-# also need some adjustment. 
++# also need some adjustment.
+ 
+ # Uncomment the following and update to enable ECW read support with the 5.0 SDK
+ #ECWDIR  =  "c:\Intergraph\ecwsdk5"
+@@ -390,12 +390,12 @@
+ # Uncomment the following and update to enable NCSA HDF Release 5 support.
+ #HDF5_PLUGIN = NO
+ #HDF5_DIR =	c:\warmerda\supportlibs\hdf5\5-164-win
+-#HDF5_LIB =	$(HDF5_DIR)\dll\hdf5dll.lib 
++#HDF5_LIB =	$(HDF5_DIR)\dll\hdf5dll.lib
+ 
+ # Uncomment the following and update to enable KEA support.
+ #KEA_PLUGIN = NO
+ #KEA_CFLAGS = -Ic:\kea\include
+-#KEA_LIB = c:\kea\libkea.lib 
++#KEA_LIB = c:\kea\libkea.lib
+ 
+ # Uncomment the following for MrSID support.  Only MRSID_DIR is required,
+ # which may point to a MrSID Raster SDK, Lidar SDK, or the combined SDK, and
+@@ -424,7 +424,7 @@
+ #PG_LIB = n:\pkg\libpq_win32\lib\libpqdll.lib wsock32.lib
+ 
+ # MySQL Libraries
+-# NOTE: Need /MT instead of /MD, also enable /EHsc switch. 
++# NOTE: Need /MT instead of /MD, also enable /EHsc switch.
+ #MYSQL_INC_DIR = D:\Software\MySQLServer4.1\include
+ #MYSQL_LIB = D:\Software\MySQLServer4.1\lib\opt\libmysql.lib advapi32.lib
+ 
+@@ -509,15 +509,15 @@
+ #SDE_VERSION=91
+ #SDE_PLUGIN = NO
+ #SDE_SDK = C:\arcgis\arcsde
+-#SDE_INC = $(SDE_SDK)\include 
++#SDE_INC = $(SDE_SDK)\include
+ #SDE_LIB = $(SDE_SDK)\lib\pe$(SDE_VERSION).lib \
+-#          $(SDE_SDK)\lib\sde$(SDE_VERSION).lib $(SDE_SDK)\lib\sg$(SDE_VERSION).lib      
++#          $(SDE_SDK)\lib\sde$(SDE_VERSION).lib $(SDE_SDK)\lib\sg$(SDE_VERSION).lib
+ 
+ 
+ #FGDB_ENABLED = YES
+ #FGDB_PLUGIN = YES
+ #FGDB_SDK = C:\Users\rburhum\Desktop\FileGDB_API_VS2008_1_0beta3
+-#FGDB_INC = $(FGDB_SDK)\include 
++#FGDB_INC = $(FGDB_SDK)\include
+ #FGDB_LIB = $(FGDB_SDK)\lib\FileGDBAPI.lib
+ 
+ #uncomment to build AmigoCloud as a plugin instead
+@@ -676,7 +676,7 @@
+ # Cryptopp stuff.
+ # Make sure cryptopp is compiled with /MD ( Properties | Configuration properties | C/C++ |  Code Generation | Runtime Library: Multi-threaded DLL (/MD))
+ # The headers file must be in $(CRYPTOPP_INC)/cryptopp (the /cryptopp part must not be in the following variable then)
+-# CRYPTOPP_INC = -Ic:/install-cryptopp-x64/include 
++# CRYPTOPP_INC = -Ic:/install-cryptopp-x64/include
+ #
+ # Define USE_ONLY_CRYPTODLL_ALG is running against cryptopp.dll, but not if statically linking
+ # USE_ONLY_CRYPTODLL_ALG=YES
+@@ -691,12 +691,12 @@
+ MRF_SETTING=yes
+ 
+ # Any extra libraries needed on this platform?
+-ADD_LIBS	= 
++ADD_LIBS	=
+ 
+ # Comment out the following if you want to build with Python support, but
+ # you don't have Numeric Python installed (with include files).  Numeric
+-# integration may not work.  This only appears to the old generation 
+-# bindings. 
++# integration may not work.  This only appears to the old generation
++# bindings.
+ #HAVE_NUMPY=1
+ 
+ ########### END OF STUFF THAT NORMALLY NEEDS TO BE UPDATED ##################
+@@ -727,12 +727,12 @@
+ GNM_FLAG = -DGNM_ENABLED
+ !ENDIF
+ 
+-#LINKER_FLAGS =	/NODEFAULTLIB:LIBC 
++#LINKER_FLAGS =	/NODEFAULTLIB:LIBC
+ LINKER_FLAGS = $(EXTRA_LINKER_FLAGS) $(MSVC_VLD_LIB) $(LDEBUG)
+ 
+ 
+ CFLAGS	=	$(OPTFLAGS) $(WARNFLAGS) $(USER_DEFS) $(SSEFLAGS) $(INC) $(AVXFLAGS) $(EXTRAFLAGS) $(OGR_FLAG) $(GNM_FLAG) $(MSVC_VLD_FLAGS) -DGDAL_COMPILATION
+-CPPFLAGS = $(CFLAGS) 
++CPPFLAGS = $(CFLAGS)
+ MAKE	=	nmake /nologo
+ 
+ !IFNDEF CC
