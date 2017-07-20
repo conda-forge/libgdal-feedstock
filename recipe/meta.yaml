@@ -12,13 +12,13 @@ source:
     # Fixes compilation problems with JPEG.
     # https://lists.osgeo.org/pipermail/gdal-dev/2016-January/043443.html
     - disable_jpeg12.patch
-    # BUILT_AS_DYNAMIC_LIB
+    # BUILT_AS_DYNAMIC_LIB.
     - windowshdf5.patch
-    # Use multiple cores on Windows
+    # Use multiple cores on Windows.
     - multiprocessor.patch
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
