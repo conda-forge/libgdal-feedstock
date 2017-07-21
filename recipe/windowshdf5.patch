@@ -1,5 +1,5 @@
---- frmts\hdf5\makefile_orig.vc	2016-01-25 23:03:48.000000000 +1000
-+++ frmts\hdf5\makefile.vc	2016-06-03 10:15:30.498546900 +1000
+--- gdal-2.2.1.orig/frmts/hdf5/makefile.vc	2017-06-23 09:18:42.000000000 -0300
++++ gdal-2.2.1/frmts/hdf5/makefile.vc	2017-07-20 17:39:59.061077854 -0300
 @@ -7,7 +7,7 @@
  
  PLUGIN_DLL 	=	gdal_HDF5.dll
