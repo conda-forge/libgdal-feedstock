@@ -18,7 +18,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
