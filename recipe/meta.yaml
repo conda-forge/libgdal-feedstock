@@ -17,7 +17,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 5
+  number: 6
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
@@ -33,12 +33,12 @@ requirements:
     - geos 3.6.2
     - giflib 5.1.*  # [not win]
     - hdf4
-    - hdf5 1.8.18|1.8.18.*
+    - hdf5 1.10.1
     - jpeg 9*
     - json-c  # [not win]
     - kealib >=1.4.7,<1.5
     - libdap4 3.18.*  # [not win]
-    - libkml  1.3.0  # [not win]
+    - libkml 1.3.0  # [not win]
     - libnetcdf 4.4.*
     - libpng >=1.6.22,<1.6.31
     - libspatialite
@@ -60,12 +60,12 @@ requirements:
     - geos 3.6.2
     - giflib 5.1.*  # [not win]
     - hdf4
-    - hdf5 1.8.18|1.8.18.*
+    - hdf5 1.10.1
     - jpeg 9*
     - json-c  # [not win]
     - kealib >=1.4.7,<1.5
     - libdap4 3.18.*  # [not win]
-    - libkml  1.3.0  # [not win]
+    - libkml 1.3.0  # [not win]
     - libnetcdf 4.4.*
     - libpng >=1.6.22,<1.6.31
     - libpq
