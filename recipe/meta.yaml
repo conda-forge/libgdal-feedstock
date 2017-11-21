@@ -17,7 +17,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 6
+  number: 7
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
@@ -26,11 +26,14 @@ build:
 requirements:
   build:
     - python  # [win]
+    # boost needed for KML
+    - boost-cpp 1.65.1  # [not win]
     - cmake  # [win]
     - curl >=7.54.1,<8
     - expat 2.1.*
     - freexl
     - geos 3.6.2
+    - geotiff
     - giflib 5.1.*  # [not win]
     - hdf4
     - hdf5 1.10.1
@@ -58,6 +61,7 @@ requirements:
     - expat 2.1.*
     - freexl
     - geos 3.6.2
+    - geotiff
     - giflib 5.1.*  # [not win]
     - hdf4
     - hdf5 1.10.1

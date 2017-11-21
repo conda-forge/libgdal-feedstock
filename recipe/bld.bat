@@ -76,7 +76,9 @@ set BLD_OPTS=%WIN64% ^
     TIFF_OPTS=-DBIGTIFF_SUPPORT ^
     XERCES_DIR=%LIBRARY_PREFIX% ^
     XERCES_INCLUDE="-I%LIBRARY_INC% -I%LIBRARY_INC%\xercesc" ^
-    XERCES_LIB=%LIBRARY_LIB%\xerces-c_3.lib
+    XERCES_LIB=%LIBRARY_LIB%\xerces-c_3.lib ^
+    GEOTIFF_INC="-I%LIBRARY_INC%" ^
+    GEOTIFF_LIB=%LIBRARY_LIB%\geotiff_i.lib
 
 nmake /f makefile.vc %BLD_OPTS%
 if errorlevel 1 exit 1
