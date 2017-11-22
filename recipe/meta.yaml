@@ -1,12 +1,12 @@
-{% set version = "2.2.2" %}
+{% set version = "2.2.3" %}
 
 package:
   name: libgdal
   version: {{ version }}
 
 source:
-  url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}.tar.gz
-  sha256: 14c1f78a60f429ad51c08d75cbf49771f1e6b20e7385c6e8379b40e8dfa39544
+  url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}RC1.tar.gz
+  sha256: 52f01bda8968643633016769607e6082a8ba1c746fadc2c1abe12cf7dc8f61dd
   patches:
     # Fixes compilation problems with JPEG.
     # https://lists.osgeo.org/pipermail/gdal-dev/2016-January/043443.html
@@ -17,7 +17,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 7
+  number: 0
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
@@ -46,7 +46,7 @@ requirements:
     - libpng >=1.6.22,<1.6.31
     - libspatialite
     - libtiff >=4.0.3,<4.0.8
-    - openjpeg 2.1.0
+    - openjpeg 2.3.*
     - poppler  # [not win]
     - postgresql
     - proj4 4.9.3
@@ -75,7 +75,7 @@ requirements:
     - libpq
     - libspatialite
     - libtiff >=4.0.3,<4.0.8
-    - openjpeg >=2.1,<2.3
+    - openjpeg 2.3.*
     - poppler  # [not win]
     - proj4 4.9.3
     - sqlite 3.13.*
