@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}RC1.tar.gz
+  url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}.tar.gz
   sha256: 52f01bda8968643633016769607e6082a8ba1c746fadc2c1abe12cf7dc8f61dd
   patches:
     # Fixes compilation problems with JPEG.
