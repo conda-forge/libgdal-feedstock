@@ -47,7 +47,7 @@ requirements:
     - libspatialite
     - libtiff >=4.0.3,<4.0.8
     - openjpeg 2.3.*
-    - poppler  # [not win]
+    - poppler 0.61.*  # [not win]
     - postgresql
     - proj4 4.9.3
     - sqlite 3.13.*
@@ -76,7 +76,7 @@ requirements:
     - libspatialite
     - libtiff >=4.0.3,<4.0.8
     - openjpeg 2.3.*
-    - poppler  # [not win]
+    - poppler 0.61.*  # [not win]
     - proj4 4.9.3
     - sqlite 3.13.*
     - xerces-c
