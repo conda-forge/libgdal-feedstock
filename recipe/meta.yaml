@@ -17,7 +17,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
@@ -51,7 +51,7 @@ requirements:
     - postgresql
     - proj4 4.9.3
     - sqlite 3.13.*
-    - xerces-c
+    - xerces-c 3.2.0
     - zlib 1.2.11  # [not win]
     - xz 5.2.*
     - vc 9  # [win and py27]
@@ -79,7 +79,7 @@ requirements:
     - poppler 0.61.*  # [not win]
     - proj4 4.9.3
     - sqlite 3.13.*
-    - xerces-c
+    - xerces-c 3.2.0
     - zlib 1.2.11  # [not win]
     - xz 5.2.*
     - vc 9  # [win and py27]
