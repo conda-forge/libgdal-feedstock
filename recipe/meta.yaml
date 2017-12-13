@@ -17,7 +17,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
@@ -26,11 +26,9 @@ build:
 requirements:
   build:
     - python  # [win]
-    # boost needed for KML
-    - boost-cpp 1.65.1  # [not win]
     - cmake  # [win]
     - curl >=7.54.1,<8
-    - expat 2.1.*
+    - expat 2.2.*
     - freexl
     - geos 3.6.2
     - geotiff
@@ -43,14 +41,14 @@ requirements:
     - libdap4 3.18.*  # [not win]
     - libkml 1.3.0  # [not win]
     - libnetcdf 4.4.*
-    - libpng >=1.6.22,<1.6.31
+    - libpng >=1.6.32,<1.6.35
     - libspatialite
-    - libtiff >=4.0.3,<4.0.8
+    - libtiff >=4.0.8,<4.0.10
     - openjpeg 2.3.*
     - poppler 0.61.*  # [not win]
     - postgresql
     - proj4 4.9.3
-    - sqlite 3.13.*
+    - sqlite 3.20.*
     - xerces-c 3.2.0
     - zlib 1.2.11  # [not win]
     - xz 5.2.*
@@ -58,7 +56,7 @@ requirements:
     - vc 14  # [win and (py35 or py36)]
   run:
     - curl >=7.54.1,<8
-    - expat 2.1.*
+    - expat 2.2.*
     - freexl
     - geos 3.6.2
     - geotiff
@@ -71,14 +69,14 @@ requirements:
     - libdap4 3.18.*  # [not win]
     - libkml 1.3.0  # [not win]
     - libnetcdf 4.4.*
-    - libpng >=1.6.22,<1.6.31
+    - libpng >=1.6.32,<1.6.35
     - libpq
     - libspatialite
-    - libtiff >=4.0.3,<4.0.8
+    - libtiff >=4.0.8,<4.0.10
     - openjpeg 2.3.*
     - poppler 0.61.*  # [not win]
     - proj4 4.9.3
-    - sqlite 3.13.*
+    - sqlite 3.20.*
     - xerces-c 3.2.0
     - zlib 1.2.11  # [not win]
     - xz 5.2.*
