@@ -75,6 +75,7 @@ export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
             --with-geotiff=$PREFIX \
             --with-liblzma=yes \
             --with-netcdf=$PREFIX \
+            --with-libiconv-prefix=$PREFIX \
             --with-openjpeg=$PREFIX \
             --with-poppler=$PREFIX \
             --with-pcre \
