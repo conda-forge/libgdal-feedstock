@@ -27,6 +27,7 @@ requirements:
   build:
     - boost 1.66.0  # only need to get conda-forge's libkml instead of defaults
     - python  # [win]
+    - m2w64-xz  # [win]
     - cmake  # [win]
     - curl >=7.54.1,<8
     - expat 2.2.*
