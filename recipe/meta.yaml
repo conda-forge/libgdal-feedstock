@@ -17,7 +17,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
@@ -42,7 +42,8 @@ requirements:
     - kealib >=1.4.7,<1.5
     - libdap4 3.18.*  # [not win]
     - libkml 1.3.0  # [not win]
-    - libnetcdf 4.4.*
+    - libnetcdf 4.4.*  # [win and py2k]
+    - libnetcdf 4.5.*  # [not (win and py2k)]
     - libpng >=1.6.32,<1.6.35
     - libspatialite
     - libtiff >=4.0.8,<4.0.10
@@ -71,7 +72,8 @@ requirements:
     - kealib >=1.4.7,<1.5
     - libdap4 3.18.*  # [not win]
     - libkml 1.3.0  # [not win]
-    - libnetcdf 4.4.*
+    - libnetcdf 4.4.*  # [win and py2k]
+    - libnetcdf 4.5.*  # [not (win and py2k)]
     - libpng >=1.6.32,<1.6.35
     - libpq
     - libspatialite
