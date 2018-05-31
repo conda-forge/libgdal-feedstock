@@ -11,7 +11,6 @@ gdalwarp -s_srs "+proj=latlong" -t_srs "$proj4" -of EHdr grid.asc grid.flt
 gdalinfo cropped.cub
 
 # From @akorosov. See https://github.com/conda-forge/gdal-feedstock/issues/83
-export CPL_ZIP_ENCODING=UTF-8
 gdalinfo /vsizip/stere.zip/stere.tif
 
 # Check shapefile read.
