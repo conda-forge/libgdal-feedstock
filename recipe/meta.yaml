@@ -89,6 +89,8 @@ requirements:
     - vc 14  # [win and (py35 or py36)]
 
 test:
+  requires:
+    - libstdcxx-ng  # [linux]
   files:
     - test_data
   commands:
