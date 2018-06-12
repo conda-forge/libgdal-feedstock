@@ -17,7 +17,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 3
+  number: 4
   skip: True  # [win and py36]
   features:
     - vc9  # [win and py27]
@@ -87,10 +87,9 @@ requirements:
     - xz 5.2.*
     - vc 9  # [win and py27]
     - vc 14  # [win and (py35 or py36)]
+    - libstdcxx-ng  # [linux]
 
 test:
-  requires:
-    - libstdcxx-ng  # [linux]
   files:
     - test_data
   commands:
