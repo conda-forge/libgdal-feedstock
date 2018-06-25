@@ -1,0 +1,10 @@
+--- gdal-2.3.0.orig/port/GNUmakefile	2018-05-04 13:05:46.000000000 -0300
++++ gdal-2.3.0/port/GNUmakefile	2018-06-20 08:11:45.931525412 -0300
+@@ -96,6 +96,7 @@
+ 	cpl_string.h \
+ 	cpl_time.h \
+ 	cpl_virtualmem.h \
++	cpl_vsi_error.h \
+ 	cpl_vsi.h \
+ 	cpl_vsi_virtual.h \
+ 	gdal_csv.h
