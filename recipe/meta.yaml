@@ -21,7 +21,7 @@ build:
 
 requirements:
   build:
-    - pkg-config  # [unix]
+    - pkg-config  # [not win]
     - cmake  # [win]
     - m2w64-xz  # [win]
     - {{ compiler('c') }}
