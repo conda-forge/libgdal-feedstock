@@ -32,8 +32,6 @@ rm -rf $PREFIX/lib/*.la
 # Force python bindings to not be built.
 unset PYTHON
 
-export CFLAGS="-O2 -Wl,-S $CFLAGS"
-export CXXFLAGS="-O2 -Wl,-S $CXXFLAGS"
 
 if [ $(uname) == Darwin ]; then
     export LDFLAGS="-headerpad_max_install_names"
@@ -48,6 +46,8 @@ else
     OPTS="--disable-rpath"
     COMP_CC=gcc
     COMP_CXX=g++
+    export CFLAGS="-O2 -Wl,-S $CFLAGS"
+    export CXXFLAGS="-O2 -Wl,-S $CXXFLAGS"
 fi
 
 export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
