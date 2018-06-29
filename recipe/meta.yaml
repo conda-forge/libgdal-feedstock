@@ -80,7 +80,6 @@ requirements:
     - xerces-c
     - zlib  # [not win]
     - xz
-    - libstdcxx-ng  # [linux]
 
 test:
   files:
