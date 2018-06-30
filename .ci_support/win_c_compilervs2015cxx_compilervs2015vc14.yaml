@@ -1,5 +1,3 @@
-boost:
-- 1.67.0
 c_compiler:
 - vs2015
 curl:
@@ -20,6 +18,8 @@ jpeg:
 - '9'
 json_c:
 - '0.13'
+kealib:
+- 1.4.9
 libdap4:
 - '3.19'
 libkml:
@@ -33,8 +33,6 @@ libtiff:
 openjpeg:
 - '2.3'
 pin_run_as_build:
-  boost:
-    max_pin: x.x.x
   curl:
     max_pin: x
   expat:
@@ -50,6 +48,8 @@ pin_run_as_build:
   jpeg:
     max_pin: x
   json-c:
+    max_pin: x.x
+  kealib:
     max_pin: x.x
   libdap4:
     max_pin: x.x

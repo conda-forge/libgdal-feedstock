@@ -27,7 +27,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - boost  # only need to get conda-forge's libkml instead of defaults
     - curl
     - expat
     - freexl
@@ -38,7 +37,7 @@ requirements:
     - hdf5
     - jpeg
     - json-c  # [not win]
-    - kealib >=1.4.7,<1.5
+    - kealib
     - libdap4  # [not win]
     - libkml  # [not win]
     - libnetcdf
@@ -54,7 +53,6 @@ requirements:
     - zlib  # [not win]
     - xz
   run:
-    - boost  # only need to get conda-forge's libkml instead of defaults
     - curl
     - expat
     - freexl
@@ -65,7 +63,7 @@ requirements:
     - hdf5
     - jpeg
     - json-c  # [not win]
-    - kealib >=1.4.7,<1.5
+    - kealib
     - libdap4  # [not win]
     - libkml  # [not win]
     - libnetcdf
