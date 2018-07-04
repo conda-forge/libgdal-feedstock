@@ -5,6 +5,10 @@ set -e # Abort on error.
 # Force python bindings to not be built.
 unset PYTHON
 
+if [ $(uname) != Darwin ]; then
+  export CFLAGS="-O2 -Wl,-S $CFLAGS"
+  export CXXFLAGS="-O2 -Wl,-S $CXXFLAGS"
+fi
 export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
 
 # Filter out -std=.* from CXXFLAGS as it disrupts checks for C++ language levels.
