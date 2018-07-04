@@ -40,7 +40,7 @@ requirements:
     - libdap4  # [not win]
     - libkml  # [not win]
     - libnetcdf 4.4.*  # [win and vc<14]
-    - libnetcdf
+    - libnetcdf  # [not (win and vc<14)]
     - libpng
     - libspatialite
     - libtiff
@@ -67,7 +67,7 @@ requirements:
     - libdap4  # [not win]
     - libkml  # [not win]
     - libnetcdf 4.4.*  # [win and vc<14]
-    - libnetcdf
+    - libnetcdf  # [not (win and vc<14)]
     - libpng
     - libpq
     - libspatialite
