@@ -1,4 +1,4 @@
-{% set version = "2.3.0" %}
+{% set version = "2.3.1" %}
 
 package:
   name: libgdal
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}.tar.xz
-  sha256: 6f75e49aa30de140525ccb58688667efe3a2d770576feb7fbc91023b7f552aa2
+  sha256: 9c4625c45a3ee7e49a604ef221778983dd9fd8104922a87f20b99d9bedb7725a
   patches:
     # BUILT_AS_DYNAMIC_LIB.
     - windowshdf5.patch
@@ -14,83 +14,70 @@ source:
     - multiprocessor.patch
     # disable 12 bit jpeg on Windows as we aren't using internal jpeg
     - disable_jpeg12.patch
-    # merged upstream and can be dropped in the next release
-    # See https://github.com/OSGeo/gdal/issues/674
-    - backport_a04416c.patch
 
 build:
-  number: 2
-  skip: True  # [(win and py27) or (win and py36)]
-  features:
-    - vc9  # [win and py27]
-    - vc14  # [win and (py35 or py36)]
+  number: 0
+  skip: True  # [win and vc<14]
 
 requirements:
   build:
-    - boost 1.66.0  # only need to get conda-forge's libkml instead of defaults
-    - python  # [win]
-    - pkg-config  # [unix]
-    - m2w64-xz  # [win]
+    - pkg-config  # [not win]
     - cmake  # [win]
-    - curl >=7.54.1,<8
-    - expat 2.2.*
+    - m2w64-xz  # [win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - curl
+    - expat
     - freexl
-    - geos 3.6.2
+    - geos
     - geotiff
-    - giflib 5.1.*  # [not win]
+    - giflib  # [not win]
     - hdf4
-    - hdf5 1.10.1
-    - jpeg 9*
-    - json-c 0.12.1  # [not win]
-    - kealib >=1.4.7,<1.5
-    - libdap4 3.18.*  # [not win]
-    - libkml 1.3.0  # [not win]
-    - libnetcdf 4.4.*  # [win and py2k]
-    - libnetcdf 4.5.*  # [not (win and py2k)]
-    - libpng >=1.6.32,<1.6.35
+    - hdf5
+    - jpeg
+    - json-c  # [not win]
+    - kealib
+    - libdap4  # [not win]
+    - libkml  # [not win]
+    - libnetcdf
+    - libpng
     - libspatialite
-    - libtiff >=4.0.8,<4.0.10
-    - openjpeg 2.3.*
-    - poppler 0.61.*  # [not win]
+    - libtiff
+    - openjpeg
+    - poppler  # [not win]
     - postgresql
-    - proj4 4.9.3
-    - sqlite 3.20.*
-    - xerces-c 3.2.0
-    - zlib 1.2.11  # [not win]
-    - xz 5.2.*
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
+    - proj4
+    - sqlite
+    - xerces-c
+    - zlib  # [not win]
+    - xz
   run:
-    - boost 1.66.0  # only need to get conda-forge's libkml instead of defaults
-    - curl >=7.54.1,<8
-    - expat 2.2.*
+    - curl
+    - expat
     - freexl
-    - geos 3.6.2
+    - geos
     - geotiff
-    - giflib 5.1.*  # [not win]
+    - giflib  # [not win]
     - hdf4
-    - hdf5 1.10.1
-    - jpeg 9*
-    - json-c 0.12.1  # [not win]
-    - kealib >=1.4.7,<1.5
-    - libdap4 3.18.*  # [not win]
-    - libkml 1.3.0  # [not win]
-    - libnetcdf 4.4.*  # [win and py2k]
-    - libnetcdf >=4.5  # [not (win and py2k)]
-    - libpng >=1.6.32,<1.6.35
+    - hdf5
+    - jpeg
+    - json-c  # [not win]
+    - kealib
+    - libdap4  # [not win]
+    - libkml  # [not win]
+    - libnetcdf
+    - libpng
     - libpq
     - libspatialite
-    - libtiff >=4.0.8,<4.0.10
-    - openjpeg 2.3.*
-    - poppler 0.61.*  # [not win]
-    - proj4 4.9.3
-    - sqlite 3.20.*
-    - xerces-c 3.2.0
-    - zlib 1.2.11  # [not win]
-    - xz 5.2.*
-    - vc 9  # [win and py27]
-    - vc 14  # [win and (py35 or py36)]
-    - libstdcxx-ng  # [linux]
+    - libtiff
+    - openjpeg
+    - poppler  # [not win]
+    - proj4
+    - sqlite
+    - xerces-c
+    - zlib  # [not win]
+    - xz
 
 test:
   files:
@@ -111,7 +98,7 @@ about:
   home: http://www.gdal.org/
   license: MIT
   license_file: LICENSE.TXT
-  summary: 'The Geospatial Data Abstraction Library (GDAL).'
+  summary: 'The Geospatial Data Abstraction Library (GDAL)'
 
 extra:
   recipe-maintainers:
