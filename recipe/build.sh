@@ -2,39 +2,22 @@
 
 set -e # Abort on error.
 
-# Get rid of any `.la` from defaults.
-rm -rf $PREFIX/lib/*.la
-
 # Force python bindings to not be built.
 unset PYTHON
 
-
-if [ $(uname) == Darwin ]; then
-    export LDFLAGS="-headerpad_max_install_names"
-    OPTS="--enable-rpath"
-    export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
-    COMP_CC=clang
-    COMP_CXX=clang++
-    export MACOSX_DEPLOYMENT_TARGET="10.9"
-    export CXXFLAGS="${CXXFLAGS} -stdlib=libc++"
-    export LDFLAGS="${LDFLAGS} -headerpad_max_install_names"
-else
-    OPTS="--disable-rpath"
-    COMP_CC=gcc
-    COMP_CXX=g++
-    export CFLAGS="-O2 -Wl,-S $CFLAGS"
-    export CXXFLAGS="-O2 -Wl,-S $CXXFLAGS"
-fi
-
-export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
 export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
+
+# Filter out -std=.* from CXXFLAGS as it disrupts checks for C++ language levels.
+re='(.*[[:space:]])\-std\=[^[:space:]]*(.*)'
+if [[ "${CXXFLAGS}" =~ $re ]]; then
+    export CXXFLAGS="${BASH_REMATCH[1]}${BASH_REMATCH[2]}"
+fi
 
 # `--without-pam` was removed.
 # See https://github.com/conda-forge/gdal-feedstock/pull/47 for the discussion.
 
-./configure CC=$COMP_CC \
-            CXX=$COMP_CXX \
-            --prefix=$PREFIX \
+./configure --prefix=$PREFIX \
+            --host=$HOST \
             --with-curl \
             --with-dods-root=$PREFIX \
             --with-expat=$PREFIX \
@@ -48,10 +31,8 @@ export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
             --with-libz=$PREFIX \
             --with-libkml=$PREFIX \
             --with-libtiff=$PREFIX \
-            --with-geotiff=$PREFIX \
             --with-liblzma=yes \
             --with-netcdf=$PREFIX \
-            --with-libiconv-prefix=$PREFIX \
             --with-openjpeg=$PREFIX \
             --with-poppler=$PREFIX \
             --with-pcre \
@@ -63,7 +44,10 @@ export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
             --with-xerces=$PREFIX \
             --with-xml2=$PREFIX \
             --without-python \
+            --verbose \
             $OPTS
+
+make -j $CPU_COUNT ${VERBOSE_AT}
 
 make -j $CPU_COUNT
 make install
