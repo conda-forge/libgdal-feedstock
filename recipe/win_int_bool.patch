@@ -1,0 +1,11 @@
+--- gdal-2.2.4.orig/port/cpl_cpu_features.cpp	2018-03-19 10:26:52.000000000 -0300
++++ gdal-2.2.4/port/cpl_cpu_features.cpp	2018-07-24 21:52:40.873044525 -0300
+@@ -202,7 +202,7 @@
+ 
+ #else
+ 
+-int CPLHaveRuntimeAVX()
++bool CPLHaveRuntimeAVX()
+ {
+     return false;
+ }

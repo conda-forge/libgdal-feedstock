@@ -15,6 +15,7 @@ source:
     - windowshdf5.patch
     # Use multiple cores on Windows.
     - multiprocessor.patch
+    - win_int_bool.patch  # [win and vc<14]
 
 build:
   number: 6
