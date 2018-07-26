@@ -6,21 +6,15 @@ if "%ARCH%"=="64" (
 
 :: Work out MSVC_VER - needed for build process.
 :: Currently guess from Python version
-if "%CONDA_PY%" == "27" (
+if "%VS_MAJOR%" == "9" (
     set MSVC_VER=1500
 )
-if "%CONDA_PY%" == "34" (
-    set MSVC_VER=1600
-)
-if "%CONDA_PY%" == "35" (
-    set MSVC_VER=1900
-)
-if "%CONDA_PY%" == "36" (
+if "%VS_MAJOR%" == "14" (
     set MSVC_VER=1900
 )
 
 if "%MSVC_VER%"=="" (
-    echo "Python version not supported. Please update bld.bat"
+    echo "vc version not supported. Please update bld.bat"
     exit 1
 )
 
