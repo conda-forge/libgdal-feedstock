@@ -17,7 +17,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 6
+  number: 7
 
 requirements:
   build:
@@ -39,8 +39,7 @@ requirements:
     - kealib
     - libdap4  # [not win]
     - libkml  # [not win]
-    - libnetcdf 4.4.*  # [win and vc<14]
-    - libnetcdf  # [not (win and vc<14)]
+    - libnetcdf
     - libpng
     - libspatialite
     - libtiff
@@ -66,8 +65,7 @@ requirements:
     - kealib
     - libdap4  # [not win]
     - libkml  # [not win]
-    - libnetcdf 4.4.*  # [win and vc<14]
-    - libnetcdf  # [not (win and vc<14)]
+    - libnetcdf
     - libpng
     - libpq
     - libspatialite
