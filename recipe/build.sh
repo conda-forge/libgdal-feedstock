@@ -12,16 +12,10 @@ export CFLAGS="-O2 -Wl,-S $CFLAGS"
 export CXXFLAGS="-O2 -Wl,-S $CXXFLAGS"
 
 if [ $(uname) == Darwin ]; then
-    export LDFLAGS="-headerpad_max_install_names"
-    OPTS="--enable-rpath"
-    export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
     COMP_CC=clang
     COMP_CXX=clang++
-    export MACOSX_DEPLOYMENT_TARGET="10.9"
-    export CXXFLAGS="${CXXFLAGS} -stdlib=libc++"
-    export LDFLAGS="${LDFLAGS} -headerpad_max_install_names"
 else
-    OPTS="--disable-rpath"
+    # OPTS="--disable-rpath"
     COMP_CC=gcc
     COMP_CXX=g++
 fi
