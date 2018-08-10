@@ -37,7 +37,9 @@ requirements:
     - jpeg
     - json-c  # [not win]
     - kealib
-    - libdap4  # [not win]
+    # drop until we can build it with the new syntax:
+    #  https://github.com/conda-forge/libdap4-feedstock/pull/23
+    # - libdap4  # [not win]
     - libkml  # [not win]
     - libnetcdf
     - libpng
@@ -63,7 +65,9 @@ requirements:
     - jpeg
     - json-c  # [not win]
     - kealib
-    - libdap4  # [not win]
+    # drop until we can build it with the new syntax:
+    #  https://github.com/conda-forge/libdap4-feedstock/pull/23
+    # - libdap4  # [not win]
     - libkml  # [not win]
     - libnetcdf
     - libpng
