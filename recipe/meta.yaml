@@ -93,7 +93,8 @@ test:
     - gdalenhance --version
     - gdalwarp --version
     - gdalinfo --formats
-    - gdalinfo http://thredds.nersc.no/thredds/dodsC/greenpath/Model/topaz  # [not win]
+    # drop until we can build libdap4 with the new syntax.
+    # - gdalinfo http://thredds.nersc.no/thredds/dodsC/greenpath/Model/topaz  # [not win]
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
