@@ -3,7 +3,7 @@
 set -e # Abort on error.
 
 # Get rid of any `.la` from defaults.
-rm -rf $PREFIX/lib/*.la
+find $PREFIX/lib -name '*.la' -delete
 
 # Force python bindings to not be built.
 unset PYTHON
@@ -26,9 +26,6 @@ export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
 # `--without-pam` was removed.
 # See https://github.com/conda-forge/gdal-feedstock/pull/47 for the discussion.
 
-# drop dods (libdap4) until we can build it with the new syntax:
-#  https://github.com/conda-forge/libdap4-feedstock/pull/23
-# --with-dods-root=$PREFIX \
 ./configure CC=$COMP_CC \
             CXX=$COMP_CXX \
             --prefix=$PREFIX \
@@ -59,6 +56,7 @@ export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
             --with-xerces=$PREFIX \
             --with-xml2=$PREFIX \
             --without-python \
+            --with-dods-root=$PREFIX \
             $OPTS
 
 make -j $CPU_COUNT
@@ -73,3 +71,5 @@ mkdir -p $DEACTIVATE_DIR
 
 cp $RECIPE_DIR/scripts/activate.sh $ACTIVATE_DIR/gdal-activate.sh
 cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/gdal-deactivate.sh
+
+find $PREFIX -name '*.la' -delete

@@ -8,6 +8,8 @@ source:
   url: http://download.osgeo.org/gdal/{{ version }}/gdal-{{ version }}.tar.xz
   sha256: 441eb1d1acb35238ca43a1a0a649493fc91fdcbab231d0747e9d462eea192278
   patches:
+    # Latest poppler patch.
+    - 124f0343436d1267319ac627fc220530091b41ea.patch
     # Fixes compilation problems with JPEG.
     # https://lists.osgeo.org/pipermail/gdal-dev/2016-January/043443.html
     - disable_jpeg12.patch
@@ -17,7 +19,7 @@ source:
     - multiprocessor.patch
 
 build:
-  number: 7
+  number: 8
 
 requirements:
   build:
@@ -37,9 +39,7 @@ requirements:
     - jpeg
     - json-c  # [not win]
     - kealib
-    # drop until we can build it with the new syntax:
-    #  https://github.com/conda-forge/libdap4-feedstock/pull/23
-    # - libdap4  # [not win]
+    - libdap4  # [not win]
     - libkml  # [not win]
     - libnetcdf
     - libpng
@@ -65,9 +65,7 @@ requirements:
     - jpeg
     - json-c  # [not win]
     - kealib
-    # drop until we can build it with the new syntax:
-    #  https://github.com/conda-forge/libdap4-feedstock/pull/23
-    # - libdap4  # [not win]
+    - libdap4  # [not win]
     - libkml  # [not win]
     - libnetcdf
     - libpng
@@ -93,10 +91,7 @@ test:
     - gdalenhance --version
     - gdalwarp --version
     - gdalinfo --formats
-    # drop until we can build libdap4 with the new syntax.
-    # - gdalinfo http://thredds.nersc.no/thredds/dodsC/greenpath/Model/topaz  # [not win]
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+    - gdalinfo http://thredds.nersc.no/thredds/dodsC/greenpath/Model/topaz  # [not win]
 
 about:
   home: http://www.gdal.org/
