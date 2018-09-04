@@ -26,9 +26,6 @@ export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
 # `--without-pam` was removed.
 # See https://github.com/conda-forge/gdal-feedstock/pull/47 for the discussion.
 
-# drop dods (libdap4) until we can build it with the new syntax:
-#  https://github.com/conda-forge/libdap4-feedstock/pull/23
-# --with-dods-root=$PREFIX \
 ./configure CC=$COMP_CC \
             CXX=$COMP_CXX \
             --prefix=$PREFIX \
@@ -59,6 +56,7 @@ export CPPFLAGS="$CPPFLAGS -I$PREFIX/include"
             --with-xerces=$PREFIX \
             --with-xml2=$PREFIX \
             --without-python \
+            --with-dods-root=$PREFIX \
             $OPTS
 
 make -j $CPU_COUNT
