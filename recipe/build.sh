@@ -2,6 +2,9 @@
 
 set -e # Abort on error.
 
+# Get rid of any `.la` from defaults.
+find $PREFIX/lib -name '*.la' -delete
+
 # Force python bindings to not be built.
 unset PYTHON
 
@@ -65,3 +68,6 @@ mkdir -p $DEACTIVATE_DIR
 
 cp $RECIPE_DIR/scripts/activate.sh $ACTIVATE_DIR/gdal-activate.sh
 cp $RECIPE_DIR/scripts/deactivate.sh $DEACTIVATE_DIR/gdal-deactivate.sh
+
+# We can remove this when we start using the new conda-build.
+find $PREFIX -name '*.la' -delete
